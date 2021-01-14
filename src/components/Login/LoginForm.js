@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Form/Input';
-// import {UserContext} from '../UserContext';
+
 
 const LoginForm = () => {
   // const [data, setData] = React.useState('');
@@ -23,7 +23,6 @@ const LoginForm = () => {
     setTimeout(function () { handleLogIn(); }, 1000);
   };
 
-// const dados = React.useContext(UserContext);
 
   return (
     <div className="container animeLeft grid grid-template-areas-2">
