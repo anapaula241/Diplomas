@@ -1,0 +1,122 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap');
+
+body{
+    font-family: Helvetica, Arial, sans-serif;
+    
+} */
+/* .container{
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.error{
+    color: #c32b3f;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.title {
+    font-family: 'Spectral', 'Georgia';
+    line-height: 1;
+    font-size: 3.5rem;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+.title::after {
+    content: '';
+    display: block;
+    width: 1.7rem;
+    height: 1.7rem;    
+    background:#3c6178;
+    position: absolute;
+    bottom: 4px;
+    left: -4px;
+    border-radius: 0.2rem;
+    z-index: -1;
+  } */
+  
+   
+
+  /* .animeLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: animeLeft 0.3s forwards;
+  }
+  
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+     */
+  /* .perdeu {
+    display: inline-block;
+    color: #666;
+    padding: 0.5rem 0;
+    line-height: 1;
+  }
+  
+  .perdeu::after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    display: block;
+  } */
+/*   
+      
+  .subtitle {
+    font-family: 'Spectral', 'Georgia';
+    line-height: 2;
+    font-size: 2rem;
+  }
+  
+  .subtitle::after {
+    content: '';
+    display: block;
+    background: #d3d3d3;
+    height: 0.5rem;
+    width: 3rem;
+    border-radius: 0.2rem;
+  }
+
+  .subtitleModal {
+    font-family: 'Spectral', 'Georgia';
+    line-height: 2;
+    font-size: 2rem;
+  }
+  
+  .subtitleModal::after {
+    content: '';
+    display: block;
+    background: #3c6178;
+    height: 0.5rem;
+    width: 2rem;
+    border-radius: 0.2rem;
+  }
+    */
+  /* .loading{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 10px solid #3c6178;
+    border-right-color:transparent;
+    animation: loading 1s infinite;
+    z-index: 1000;
+  }
+
+  @keyframes loading {
+    to {
+            transform: rotate(360deg);
+    }
+  } */
+
+  /* .grid {
+    display: grid;
+      
+   
+  } */
+      
+  
