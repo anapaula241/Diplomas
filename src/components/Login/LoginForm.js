@@ -30,11 +30,11 @@ const LoginForm = () => {
         <div className='content' >
                    <Form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
             <Form.Row>
-              <Input lg="12" label='Masp' name='masp' size='lg' register={register({ required: true })} value={masp} type='number' placeholder="Seu Masp" textoErro={errors.masp && "Campo Masp é obrigatório"} onChange={(event) => setMasp(event.target.value)}></Input>
+              <Input lg="10" label='Masp' name='masp' size='lg' register={register({ required: true })} value={masp} type='number' placeholder="Seu Masp" textoErro={errors.masp && "Campo Masp é obrigatório"} onChange={(event) => setMasp(event.target.value)}></Input>
             </Form.Row>
 
             <Form.Row>
-              <Input lg="12" label='Senha' name='password' size='lg' register={register({ required: true })} value={password} type='text' placeholder="Sua Senha" textoErro={errors.password && "Campo Senha é obrigatório"} onChange={(event) => setPassword(event.target.value)}></Input>
+              <Input lg="10" label='Senha' name='password' size='lg' register={register({ required: true })} value={password} type='text' placeholder="Sua Senha" textoErro={errors.password && "Campo Senha é obrigatório"} onChange={(event) => setPassword(event.target.value)}></Input>
             </Form.Row>
 
             {loading ? (<Button size='lg' disabled className=" mb-4" variant="primary" type="submit"> Entrando...</Button>
