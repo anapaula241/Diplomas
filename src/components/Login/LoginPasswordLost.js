@@ -5,29 +5,33 @@ import Form from 'react-bootstrap/Form';
 import './LoginForm.css';
 import Input from '../Form/Input';
 import AlertSucess from '../Form/Alertas/AlertSucess';
+import AlertError from '../Form/Alertas/AlertError';
 
 
 const LoginPasswordLost = () => {
     const [email, setEmail] = React.useState('');
     const [loading, setLoading] = React.useState('');
-    const [showAlert, setShowAlert] = React.useState(false);
+    const [showAlertSucess, setShowAlertSucess] = React.useState(true);
+    const [showAlertError, setShowAlertError] = React.useState(false);
 
-    const handleAlertSucess = () => setShowAlert(!showAlert);
+    const handleAlertSucess = () => showAlertSucess(true);
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
         setLoading(true);
         console.log(data);
-        setTimeout(function () { setShowAlert(true) }, 1000);
+        setTimeout(function () { setShowAlertSucess(true) }, 1000);
         setTimeout(function () { setLoading(false) }, 1100);
     }
 
     return (
-        <div className="container animeLeft grid grid-template-areas-2">
+        <div className="container animeLeft ">
             <div class='titleGrid'><h1 className="mt-2 login title" >Esqueceu a senha?</h1></div>
             <div className='content' >
-                {/* {showAlert && <Alert texto='Email Enviado com Sucesso ! ' lg='8' show={showAlert} onClick={() => setShowAlert(false)}>Email Enviado com Sucesso !</Alert>} */}
-                <AlertSucess>Erro no Envio do Email !</AlertSucess>
+
+                {showAlertSucess && <AlertSucess texto='Email Enviado com sucesso !' show={showAlertSucess} className='col-md-12' onClick={() => setShowAlertSucess(false)}></AlertSucess>} 
+               {showAlertError && <AlertError texto='Erro no Envio do Email !'  show={showAlertError} className='col-md-12'  onClick={() => setShowAlertError(false)}></AlertError>} 
+   
 
                 <Form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
                     <Form.Row>

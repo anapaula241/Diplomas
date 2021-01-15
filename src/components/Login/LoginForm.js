@@ -25,8 +25,8 @@ const LoginForm = () => {
 
 
   return (
-    <div className="container animeLeft grid grid-template-areas-2">
-        <div class='titleGrid'><h1 className="mt-2 login title" >Login</h1></div>
+    <div className="container animeLeft ">
+        <div class='titleGrid'><h1 className="login title" >Login</h1></div>
         <div className='content' >
                    <Form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
             <Form.Row>
@@ -37,8 +37,8 @@ const LoginForm = () => {
               <Input lg="12" label='Senha' name='password' size='lg' register={register({ required: true })} value={password} type='text' placeholder="Sua Senha" textoErro={errors.password && "Campo Senha é obrigatório"} onChange={(event) => setPassword(event.target.value)}></Input>
             </Form.Row>
 
-            {loading ? (<Button size='lg' disabled className=" mb-4" variant="primary" type="submit"> Carregando...</Button>
-            ) : (<Button size='lg' className="col-lg-2 mb-4" variant="primary" type="submit"> Entrar </Button>)}
+            {loading ? (<Button size='lg' disabled className=" mb-4" variant="primary" type="submit"> Entrando...</Button>
+            ) : (<Button size='lg' className=" mb-4" variant="primary" type="submit"> Entrar </Button>)}
 
           </Form>
 

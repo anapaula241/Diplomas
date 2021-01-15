@@ -31,7 +31,7 @@ const App = () => {
       <>
         <GlobalStyles />
         <BrowserRouter>
-          {/* <Header></Header> */}
+          <Header></Header>
           <Routes>
             <Route path="/" element={<HomeScreen></HomeScreen>} />
             {/* <Route path="/" element={<Login />} /> */}

@@ -2,18 +2,19 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 import './LoginForm.css';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Form/Input';
+import AlertSucess from '../Form/Alertas/AlertSucess';
+import AlertError from '../Form/Alertas/AlertError';
 
 const LoginCreate = () => {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [loading, setLoading] = React.useState(false);
-    const [show, setShow] = React.useState(true);
-    const [showErro, setShowErro] = React.useState(true);
+    const [showAlertSucess, setShowAlertSucess] = React.useState(false);
+    const [showAlertError, setShowAlertError] = React.useState(false);
     const navigate = useNavigate();
     const handleComeBack = () => navigate('/login');
     const { register, handleSubmit, errors } = useForm();
@@ -22,15 +23,12 @@ const LoginCreate = () => {
     }
 
     return (
-        <div className="container animeLeft grid grid-template-areas-2">
+        <div className="container animeLeft ">
             <div class='titleGrid'><h1 className="mt-2 login title" >Cadastre-se</h1></div>
             <div className='content' >
-                <Alert className="col-md-12 " show={show} variant="success" > <strong><h3>  Seu Cadastro foi realizado com Sucesso !</h3></strong><hr></hr><div className="d-flex justify-content-end ">
-                    <Button onClick={() => setShow(false)} variant="outline-success"> Fechar </Button> </div>
-                </Alert>
-                <Alert className="col-md-12 " show={showErro} variant="danger"><strong><h3> Seu Cadastro não foi realizado ! </h3></strong><hr></hr><div className="d-flex justify-content-end ">
-                    <Button onClick={() => setShowErro(false)} variant="outline-danger"> Fechar </Button> </div>
-                </Alert>
+                
+            {showAlertSucess && <AlertSucess texto='Seu Cadastro foi Criado com Sucesso !' show={showAlertSucess} className='col-md-12' onClick={() => setShowAlertSucess(false)}></AlertSucess>} 
+               {showAlertError && <AlertError texto='Houve um Erro na Criação do Seu Cadastro !'  show={showAlertError} className='col-md-12'  onClick={() => setShowAlertError(false)}></AlertError>} 
 
                 <Form onSubmit={handleSubmit(onSubmit)} className="mt-5 ">
                     <Form.Row>
