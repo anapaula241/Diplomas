@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-function ModalEditarCadastro({show, onHide, className, onClick, children, texto}) {
+function ModalEditarCadastro({show, onHide, className,  children, texto}) {
     return (
         <Modal  size="lg" show={show} onHide={onHide} backdrop="static" keyboard={false}  >
 
@@ -14,10 +14,7 @@ function ModalEditarCadastro({show, onHide, className, onClick, children, texto}
          {children}
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={onClick}> Fechar </Button>
-          <Button variant="primary">Salvar alterações</Button>
-        </Modal.Footer>
+      
 
       </Modal>
     )

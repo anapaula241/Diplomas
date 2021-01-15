@@ -1,13 +1,26 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './Header';
-import Login from './components/Login/Login';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './global';
 import { theme } from './theme';
 import { Burger, Menu } from './components';
 import { useOnClickOutside } from './hooks';
+import Header from './Header';
+import Login from './components/Login/Login';
+import HomeScreen from './components/HomeScreen';
+import Diploma from './components/Cadastros/Diploma';
+import IncluirCadastroDiploma from './components/Cadastros/IncluirCadastroDiploma';
+import Curso from './components/Cadastros/Curso';
+import Diplomas from './components/Consultas/Diplomas';
+import LivroRegistro from './components/Operacoes/LivroRegistro';
+import DiplomaVisualizar from './components/Consultas/DiplomaVisualizar';
+import LoginCreate from './components/Login/LoginCreate';
+import ManutencaoDiploma from './components/Ferramentas/ManutencaoDiploma';
+import ManutencaoDiplomaAlterar from './components/Ferramentas/ManutencaoDiplomaAlterar';
+import Instituicao from './components/Cadastros/Instituicao';
+import IncluirCadastroInstituicao from './components/Cadastros/IncluirCadastroInstituicao';
+import CursoOfertado from './components/Cadastros/CursoOfertado';
 
 const App = () => {
   const [open, setOpen] = React.useState(false);
@@ -20,17 +33,29 @@ const App = () => {
         <BrowserRouter>
           {/* <Header></Header> */}
           <Routes>
-            <Route path="/" element={<Header></Header> } />
+            <Route path="/" element={<HomeScreen></HomeScreen>} />
+            {/* <Route path="/" element={<Login />} /> */}
+            <Route path="/login/*" element={<Login></Login>} />
+            <Route path="/cadastro/diploma" element={<Diploma></Diploma>} />
+            <Route path="/cadastro/instituicao" element={<Instituicao></Instituicao>} />
+            <Route path="/cadastro/incluirCadastroInstituicao" element={<IncluirCadastroInstituicao></IncluirCadastroInstituicao>} />
+            <Route path="/cadastro/incluirCadastroDiploma" element={<IncluirCadastroDiploma></IncluirCadastroDiploma>} />
+            <Route path="/cadastro/curso" element={<Curso></Curso>} />
+            <Route path="/cadastro/cursoOfertado" element={<CursoOfertado></CursoOfertado>} />
+            <Route path="/consulta/diplomas" element={<Diplomas></Diplomas>} />
+            <Route path="/consulta/diplomas/visualizar" element={<DiplomaVisualizar></DiplomaVisualizar>} />
+            <Route path="/ferramentas/manutencaoDiploma/alterar" element={<ManutencaoDiplomaAlterar></ManutencaoDiplomaAlterar>} />
+            <Route path="/ferramentas/manutencaoDiploma" element={<ManutencaoDiploma></ManutencaoDiploma>} />
+            <Route path="/operacoes/livroRegistro" element={<LivroRegistro></LivroRegistro>} />
+            <Route path="/ferramentas/manutencaoDiploma" element={<ManutencaoDiploma></ManutencaoDiploma>} />
           </Routes>
           <div ref={node}>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-        </div>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
         </BrowserRouter>
       </>
     </ThemeProvider>
-
-
   );
 };
 
