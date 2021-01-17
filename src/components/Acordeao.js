@@ -15,7 +15,7 @@ const Acordeao = () => {
     const [accordion3, setAcordion3] = React.useState(true);
     const [accordion4, setAcordion4] = React.useState(true);
     return (
-        <Accordion className=' mr-2 ' style={{  marginTop:'90px'}}>
+        <Accordion className=' mr-2 ' style={{  marginTop:'10px'}}>
             <Card style={{ borderWidth: '5px', backgroundColor: '#3c6178'}}>
                 <Card.Header >
                     <Accordion.Toggle as={Button} variant="link" eventKey="0" onClick={() => setAcordion1(!accordion1)} style={{ color: '#FFFFFF' , fontSize:'18px'}}  >
@@ -44,6 +44,8 @@ const Acordeao = () => {
                 <Accordion.Collapse eventKey="1">
                     <Card.Body className='ml-3'>
                         <Link className='link' to="/operacoes/livroRegistro">Livro Registro</Link>
+                        <hr></hr>
+                        <Link className='link' to="/operacoes/analiseDiploma">Análise Diploma</Link>
                     </Card.Body>
                 </Accordion.Collapse>
             </Card>

@@ -29,7 +29,7 @@ const DiplomaVisualizar = () => {
   const [diplomaTypes, setDiplomaTypes] = React.useState('');
   const [course, setCourse] = React.useState('');
   const [modality, setModality] = React.useState('');
-  const [level, setLevel] = React.useState('');
+  // const [level, setLevel] = React.useState('');
   const [yearConclusion, setYearConclusion] = React.useState('');
   const [dateGraduation, setDateGraduation] = React.useState('');
   const [processNumber, setProcessNumber] = React.useState('');

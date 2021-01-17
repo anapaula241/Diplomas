@@ -38,7 +38,7 @@ const Curso = () => {
     const handleShow = () => setShow(true);
     const handleCloseExcluirCancelar = () => setShowExcluir(false);
     const handleClose = () => setShow(false);
-    // const handleInclude = () => navigate('');
+    const handleInclude = () => navigate('/cadastro/incluirCurso');
 
 
     const onSubmit = (data) => {
@@ -87,10 +87,10 @@ const Curso = () => {
                             <Input size='lg' lg='10' label='Curso' name='name' value={name} type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} placeholder='Nome do Curso' onChange={(event) => setName(event.target.value)}></Input>
                         </Form.Row>
 
-                        {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
-                        ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
+                        {loading ? (<Button size='lg' disabled className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisando...</Button>
+                        ) : (<Button size='lg' className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisar </Button>)}
                         {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
-                        <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" > Incluir </Button>
+                        <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" onClick={handleInclude} > Incluir </Button>
 
                     </Form>
 

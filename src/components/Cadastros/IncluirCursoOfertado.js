@@ -43,7 +43,8 @@ const IncluirCursoOfertado = () => {
     const handleCloseExcluirCancelar = () => setShowExcluir(false);
     const handleClose = () => setShow(false);
     // const handleInclude = () => navigate('/cadastro/incluirCursoOfertado');
-
+      const handleBack = () => navigate('/cadastro/cursoOfertado');
+   
     const onSubmit = (data) => {
         // simulando dados do banco - início
         const dados = ([
@@ -101,10 +102,13 @@ const IncluirCursoOfertado = () => {
                                 <Textarea label='Habilitação' name='note' value={note} ref={register({ required: true })} lg='10' rows={3} size='lg' className='mt-3' onChange={(event) => setNote(event.target.value)}></Textarea>
                             </Form.Row>
 
-                            {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
-                            ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
-                            {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
-                            <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" > Incluir </Button>
+                            {loading ? (<Button size='lg' disabled className=" mt-3 mr-2" variant="primary" type="submit"> Salvando...</Button>
+                    ) : (<Button size='lg' className=" mt-3 mr-2" variant="primary" type="submit"> Salvar </Button>)}
+                    {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
+                    {loading ? (<Button size='lg' disabled className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisando...</Button>
+                    ) : (<Button size='lg' className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisar </Button>)}                    
+                    <Button  size='lg' className=" mt-3 mr-2" variant="info">Nova Inclusão</Button>
+                    <Button  size='lg' className=" mt-3 " variant="secondary" onClick={handleBack} >Voltar</Button>
 
                         </Form>
 
