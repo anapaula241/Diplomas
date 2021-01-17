@@ -39,7 +39,7 @@ const CursoOfertado = () => {
     const handleShow = () => setShow(true);
     const handleCloseExcluirCancelar = () => setShowExcluir(false);
     const handleClose = () => setShow(false);
-    const handleInclude = () => navigate('/cadastro/incluirCadastroInstituicao');
+    const handleInclude = () => navigate('/cadastro/incluirCursoOfertado');
 
     const onSubmit = (data) => {
         // simulando dados do banco - início
@@ -72,29 +72,31 @@ const CursoOfertado = () => {
         setName('');
     };
     return (
+         <div className="row justify-content-end container animeLeft">
+            <div className="col-10">
         <div className="container animeLeft ">
             <div class='titleGrid'>  <h1 className="mt-2 login title" >Cadastro de Curso Ofertado</h1></div>
           
             <div className='content' >
-               {showAlertSucessDelet && <AlertSucess texto='Registro Excluído com sucesso !' show={showAlertSucessDelet} className='col-md-11' onClick={() => setShowAlertSucessDelet(false)}></AlertSucess>} 
-               {showAlertErrorDelet && <AlertError texto='Erro na Exclusão do registro !'  show={showAlertErrorDelet} className='col-md-11'  onClick={() => setShowAlertErrorDelet(false)}></AlertError>} 
-                <Form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
+               {showAlertSucessDelet && <AlertSucess texto='Registro Excluído com sucesso !' show={showAlertSucessDelet} className='col-md-10' onClick={() => setShowAlertSucessDelet(false)}></AlertSucess>} 
+               {showAlertErrorDelet && <AlertError texto='Erro na Exclusão do registro !'  show={showAlertErrorDelet} className='col-md-10'  onClick={() => setShowAlertErrorDelet(false)}></AlertError>} 
+                <Form onSubmit={handleSubmit(onSubmit)} className="mt-5 ">
                 <Form.Row>
-                        <Input size='lg' lg='12' label='Instituição' name='institution' value={institution} type='text' register={register({ required: true })} textoErro={errors.institution && "Nome do Instituição é obrigatório"} placeholder='Nome da Instituição' onChange={(event) => setInstitution(event.target.value)}></Input>
+                        <Input size='lg' lg='10' label='Instituição' name='institution' value={institution} type='text' register={register({ required: true })} textoErro={errors.institution && "Nome do Instituição é obrigatório"} placeholder='Nome da Instituição' onChange={(event) => setInstitution(event.target.value)}></Input>
                     </Form.Row>
 
                     <Form.Row>
-                        <Input size='lg' lg='12' label='Curso' name='name' value={name} type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} placeholder='Nome do Curso' onChange={(event) => setName(event.target.value)}></Input>
+                        <Input size='lg' lg='10' label='Curso' name='name' value={name} type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} placeholder='Nome do Curso' onChange={(event) => setName(event.target.value)}></Input>
                     </Form.Row>
 
-                    {loading ? (<Button size='lg' disabled className=" mt-3 " variant="primary" type="submit"> Pesquisando...</Button>
-                    ) : (<Button size='lg' className=" mt-3 " variant="primary" type="submit"> Pesquisar </Button>)}
+                    {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
+                    ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
                     {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
                     <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" onClick={handleInclude} > Incluir </Button>
 
                 </Form>
 
-                {table && <div > <h5 className="mt-5"> Resultados Encontrados:</h5><Table striped bordered hover className=" col-lg-12  mt-3 animeLeft">
+                {table && <div > <h5 className="mt-5"> Resultados Encontrados:</h5><Table striped bordered hover className=" col-lg-10  mt-3 animeLeft">
                     <thead >
                         <tr>
                         <th>ID</th>
@@ -134,12 +136,12 @@ const CursoOfertado = () => {
             <ModalEditar show={show} onHide={handleClose} className='subtitleModal ' texto='Editar Cadastro de Diplomas' onClick={handleClose}>
                 <Form className="mt-4 container">
                     <Form.Row>
-                        <Input size='lg' lg='12' label='Curso' name='name' type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} onChange={(event) => setName(event.target.value)}></Input>
+                        <Input size='lg' lg='10' label='Curso' name='name' type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} onChange={(event) => setName(event.target.value)}></Input>
                     </Form.Row>
 
                     <Form.Row>
-                        <Select lg='6' size='lg' label='Livro' value={book} name='book' register={register({ required: true })} options={['DSRD-8', 'DSRD-7']} textoErro={errors.book && "Campo Livro é obrigatório"} onChange={({ target }) => setBook(target.value)}></Select>
-                        <Select lg='6' size='lg' label='Código do Curso' value={courseCode} name='courseCode' register={register({ required: true })} options={['112', '113']} textoErro={errors.courseCode && "Campo Código do Curso é obrigatório"} onChange={({ target }) => setCourseCode(target.value)}></Select>
+                        <Select lg='5' size='lg' label='Livro' value={book} name='book' register={register({ required: true })} options={['DSRD-8', 'DSRD-7']} textoErro={errors.book && "Campo Livro é obrigatório"} onChange={({ target }) => setBook(target.value)}></Select>
+                        <Select lg='5' size='lg' label='Código do Curso' value={courseCode} name='courseCode' register={register({ required: true })} options={['112', '113']} textoErro={errors.courseCode && "Campo Código do Curso é obrigatório"} onChange={({ target }) => setCourseCode(target.value)}></Select>
                     </Form.Row>
 
                     <Modal.Footer>
@@ -152,6 +154,8 @@ const CursoOfertado = () => {
             <ModalConfirmarExclusao showExcluir={showExcluir} onHide={handleCloseExcluirCancelar} className='subtitleModal'
                 cancelar={handleCloseExcluirCancelar} delet={(e) => handleDelete()} texto='Tem certeza que deseja excluir o item selecionado !' > </ModalConfirmarExclusao>
 
+        </div>
+        </div>
         </div>
     )
 }

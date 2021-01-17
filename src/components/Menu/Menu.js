@@ -12,10 +12,10 @@ import Acordeao from '../Acordeao';
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-       <div className="mb-8">
+       {/* <div className="mb-8 acima"> */}
   <Acordeao></Acordeao>
 
- </div>
+ {/* </div> */}
     </StyledMenu>
   )
 }

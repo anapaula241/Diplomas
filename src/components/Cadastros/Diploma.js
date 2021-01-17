@@ -30,8 +30,8 @@ const Diploma = () => {
   const [table, setTable] = React.useState(false);
   const [noRecord, setNoRecord] = React.useState(false);
   const [show, setShow] = React.useState(false);
-  const [showAlertSucessDelet, setShowAlertSucessDelet] = React.useState(true);
-  const [showAlertErrorDelet, setShowAlertErrorDelet] = React.useState(true);
+  const [showAlertSucessDelet, setShowAlertSucessDelet] = React.useState(false);
+  const [showAlertErrorDelet, setShowAlertErrorDelet] = React.useState(false);
 
   const [showExcluir, setShowExcluir] = React.useState(false);
   const navigate = useNavigate();
@@ -78,87 +78,88 @@ const Diploma = () => {
   const handleInclude = () => navigate('/cadastro/incluirCadastroDiploma');
 
   return (
-    <div className="container animeLeft  mb-5  ">
-      <div class='titleGrid'><h1 className="mt-2 login title" >Cadastro de Diplomas</h1></div>
-    
-      <div className='content' >
-        {showAlertSucessDelet && <AlertSucess texto='Registro Excluído com sucesso !' show={showAlertSucessDelet} className='col-md-12' onClick={() => setShowAlertSucessDelet(false)}></AlertSucess>}
-        {showAlertErrorDelet && <AlertError texto='Erro na Exclusão do registro !'  show={showAlertErrorDelet} className='col-md-12' onClick={() => setShowAlertErrorDelet(false)}></AlertError>}
+    <div className="row justify-content-end container animeLeft">
+      <div className="col-10">
+        <div class='titleGrid'><h1 className="mt-2 login title" >Cadastro de Diplomas</h1></div>
 
-        <Form onSubmit={handleSubmit(onSubmit)} className="mt-4 ">
+        <div className='content' >
+          {showAlertSucessDelet && <AlertSucess texto='Registro Excluído com sucesso !' show={showAlertSucessDelet} className='col-md-10 ' onClick={() => setShowAlertSucessDelet(false)}></AlertSucess>}
+          {showAlertErrorDelet && <AlertError texto='Erro na Exclusão do registro !' show={showAlertErrorDelet} className='col-md-10 ' onClick={() => setShowAlertErrorDelet(false)}></AlertError>}
 
-          <Form.Row>
-            {initialDate == '' && finalDate == '' ? (<Input size='lg' lg="12" label='Aluno' name='name'  register={register({ required: true })} value={name} type='text' textoErro={errors.name && "Nome do Aluno é obrigatória"} placeholder='Nome do aluno' onChange={(event) => setName(event.target.value)}></Input>) :
-              (<Input size='lg' lg='12' label='Aluno' name='name' value={name} type='text' register={register({ required: false })} textoErro={errors.name && "Nome do Aluno é obrigatória"} placeholder='Nome do aluno' onChange={(event) => setName(event.target.value)}></Input>)}
-          </Form.Row>
+          <Form onSubmit={handleSubmit(onSubmit)} className="mt-5 ">
 
-          <Form.Row >
-            {name == '' ? (<Input size='lg' lg="5" label='Data' name='initialDate' register={register({ required: true })} value={initialDate} type='date' textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>) :
-              (<Input size='lg' lg='5' label='Data' name='initialDate' value={initialDate} type='date' register={register({ required: false })} textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>)}
-            <p className="mt-5 mr-3 ml-3"> a </p>
-            {name == '' ? (<Input size='lg' lg="5" className='mt-2' label='' name='finalDate' register={register({ required: true })} value={finalDate} type='date' textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>) :
-              (<Input size='lg' lg='5' label='Data' className='mt-2' name='finalDate' value={finalDate} type='date' register={register({ required: false })} textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>)}
-          </Form.Row>
+            <Form.Row>
+              {initialDate == '' && finalDate == '' ? (<Input size='lg' lg="10" label='Aluno' name='name' register={register({ required: true })} value={name} type='text' textoErro={errors.name && "Nome do Aluno é obrigatória"} placeholder='Nome do aluno' onChange={(event) => setName(event.target.value)}></Input>) :
+                (<Input size='lg' lg='10' label='Aluno' name='name' value={name} type='text' register={register({ required: false })} textoErro={errors.name && "Nome do Aluno é obrigatória"} placeholder='Nome do aluno' onChange={(event) => setName(event.target.value)}></Input>)}
+            </Form.Row>
 
-          {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
-          ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
-          <Button size='lg' className=" ml-3 mt-3" variant="secondary" type="button" onClick={handleInclude} > Incluir </Button>
+            <Form.Row >
+              {name == '' ? (<Input size='lg' lg="4" label='Data' name='initialDate' register={register({ required: true })} value={initialDate} type='date' textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>) :
+                (<Input size='lg' lg='4' label='Data' name='initialDate' value={initialDate} type='date' register={register({ required: false })} textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>)}
+              <p className="mt-5 mr-3 ml-3"> a </p>
+              {name == '' ? (<Input size='lg' lg="4" className='mt-2' label='' name='finalDate' register={register({ required: true })} value={finalDate} type='date' textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>) :
+                (<Input size='lg' lg='4' label='Data' className='mt-2' name='finalDate' value={finalDate} type='date' register={register({ required: false })} textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>)}
+            </Form.Row>
 
-        </Form>
+            {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
+            ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
+            <Button size='lg' className=" ml-3 mt-3" variant="secondary" type="button" onClick={handleInclude} > Incluir </Button>
 
-        {/* tabela de resultados Encontrados - início */}
-        {table && <div > <h5 className="mt-5"> Resultados Encontrados:</h5><Table striped bordered hover className=" col-lg-12  mt-3 animeLeft">
-          <thead >
-            <tr>
-              <th >ID</th>
-              <th>Aluno</th>
-              <th>Instituiçao</th>
-              <th>Data Inclusão</th>
-              <th>Opções</th>
-            </tr>
-          </thead>
-          <tbody>
-            {table && dados
-              .filter((dado) => dado.name == name).map(({ id, name, instituição, data }) => (
-                <tr key={id}>
-                  <td>{id}</td>
-                  <td>{name}</td>
-                  <td>{instituição}</td>
-                  <td>{data}</td>
-                  <td>
+          </Form>
 
-                    <FaUserEdit size='2em' color='#3c6178' title="Editar" onClick={handleShow} ></FaUserEdit >
-                    <RiDeleteBin6Line className='ml-3 mt-1' size='1.9em' color='#c32b3f' title="Excluir" onClick={handleShowExcluir}></RiDeleteBin6Line>
-                    {/* <FaTrashAlt className='deletar-icons ' title="Excluir" onClick={handleShowExcluir} ></FaTrashAlt> */}
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </Table> </div>}
-        {noRecord && <div className='mt-5 mb-5' style={{ color: "#c32b3f" }}><h3>Nenhum registro Encontrado</h3></div>}
-        {/* tabela de resultados Encontrados - fim */}
+          {/* tabela de resultados Encontrados - início */}
+          {table && <div > <h5 className="mt-5"> Resultados Encontrados:</h5><Table striped bordered hover className=" col-lg-10  mt-3 animeLeft">
+            <thead >
+              <tr>
+                <th >ID</th>
+                <th>Aluno</th>
+                <th>Instituiçao</th>
+                <th>Data Inclusão</th>
+                <th>Opções</th>
+              </tr>
+            </thead>
+            <tbody>
+              {table && dados
+                .filter((dado) => dado.name == name).map(({ id, name, instituição, data }) => (
+                  <tr key={id}>
+                    <td>{id}</td>
+                    <td>{name}</td>
+                    <td>{instituição}</td>
+                    <td>{data}</td>
+                    <td>
+
+                      <FaUserEdit size='2em' color='#3c6178' title="Editar" onClick={handleShow} ></FaUserEdit >
+                      <RiDeleteBin6Line className='ml-3 mt-1' size='1.9em' color='#c32b3f' title="Excluir" onClick={handleShowExcluir}></RiDeleteBin6Line>
+                      {/* <FaTrashAlt className='deletar-icons ' title="Excluir" onClick={handleShowExcluir} ></FaTrashAlt> */}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table> </div>}
+          {noRecord && <div className='mt-5 mb-5' style={{ color: "#c32b3f" }}><h3>Nenhum registro Encontrado</h3></div>}
+          {/* tabela de resultados Encontrados - fim */}
+        </div>
+
+        <ModalEditar show={show} onHide={handleClose} className='subtitleModal ' texto='Editar Cadastro de Diplomas'>
+          <Form className="mt-4 containerModal">
+            <Form.Row>
+              <Input lg="10" label='Aluno' name='name' register={register({ required: false })} value={name} type='text' textoErro={errors.name && "Nome do Aluno é obrigatória"} onChange={(event) => setName(event.target.value)}></Input>
+            </Form.Row>
+            <Form.Row>
+              <Input lg="4" label='Data' name='initialDate' register={register({ required: false })} value={initialDate} type='date' textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>
+              <p className="mt-5 mr-3 ml-3"> a </p>
+              <Input lg="4" className='mt-2' label='' name='finalDate' register={register({ required: true })} value={finalDate} type='date' textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>
+            </Form.Row>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}> Fechar </Button>
+              <Button variant="primary">Salvar alterações</Button>
+            </Modal.Footer>
+          </Form>
+        </ModalEditar>
+
+        <ModalConfirmarExclusao showExcluir={showExcluir} onHide={handleCloseExcluirCancelar} className='subtitleModal'
+          cancelar={handleCloseExcluirCancelar} delet={(e) => handleDelete()} texto='Tem certeza que deseja excluir o item selecionado !' > </ModalConfirmarExclusao>
       </div>
-
-      <ModalEditar show={show} onHide={handleClose} className='subtitleModal ' texto='Editar Cadastro de Diplomas'>
-        <Form className="mt-4 containerModal">
-          <Form.Row>
-            <Input lg="12" label='Aluno' name='name' register={register({ required: false })} value={name} type='text' textoErro={errors.name && "Nome do Aluno é obrigatória"} onChange={(event) => setName(event.target.value)}></Input>
-          </Form.Row>
-          <Form.Row>
-            <Input lg="5" label='Data' name='initialDate' register={register({ required: false })} value={initialDate} type='date' textoErro={errors.initialDate && "Data inicial é obrigatória"} onChange={(event) => setInitialDate(event.target.value)}></Input>
-            <p className="mt-5 mr-3 ml-3"> a </p>
-            <Input lg="5" className='mt-2' label='' name='finalDate' register={register({ required: true })} value={finalDate} type='date' textoErro={errors.finalDate && "Data Final é obrigatória"} onChange={(event) => setFinalDate(event.target.value)}></Input>
-          </Form.Row>
-          <Modal.Footer>
-          <Button variant="secondary"  onClick={handleClose}> Fechar </Button>
-          <Button variant="primary">Salvar alterações</Button>
-        </Modal.Footer>
-        </Form>
-      </ModalEditar>
-
-      <ModalConfirmarExclusao showExcluir={showExcluir} onHide={handleCloseExcluirCancelar} className='subtitleModal'
-        cancelar={handleCloseExcluirCancelar} delet={(e) => handleDelete()} texto='Tem certeza que deseja excluir o item selecionado !' > </ModalConfirmarExclusao>
-
     </div>
   );
 }

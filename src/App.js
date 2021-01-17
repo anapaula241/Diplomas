@@ -21,6 +21,7 @@ import ManutencaoDiplomaAlterar from './components/Ferramentas/ManutencaoDiploma
 import Instituicao from './components/Cadastros/Instituicao';
 import IncluirCadastroInstituicao from './components/Cadastros/IncluirCadastroInstituicao';
 import CursoOfertado from './components/Cadastros/CursoOfertado';
+import IncluirCursoOfertado from './components/Cadastros/IncluirCursoOfertado';
 
 const App = () => {
   const [open, setOpen] = React.useState(false);
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <GlobalStyles />
+        <GlobalStyles gi/>
         <BrowserRouter>
           <Header></Header>
           <Routes>
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/cadastro/incluirCadastroDiploma" element={<IncluirCadastroDiploma></IncluirCadastroDiploma>} />
             <Route path="/cadastro/curso" element={<Curso></Curso>} />
             <Route path="/cadastro/cursoOfertado" element={<CursoOfertado></CursoOfertado>} />
+            <Route path="/cadastro/incluirCursoOfertado" element={<IncluirCursoOfertado></IncluirCursoOfertado>} />
             <Route path="/consulta/diplomas" element={<Diplomas></Diplomas>} />
             <Route path="/consulta/diplomas/visualizar" element={<DiplomaVisualizar></DiplomaVisualizar>} />
             <Route path="/ferramentas/manutencaoDiploma/alterar" element={<ManutencaoDiplomaAlterar></ManutencaoDiplomaAlterar>} />
