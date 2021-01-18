@@ -15,6 +15,7 @@ import ModalConfirmarExclusao from '../Form/Modal/ModalConfirmarExclusao';
 import AlertSucess from '../Form/Alertas/AlertSucess';
 import AlertError from '../Form/Alertas/AlertError';
 import Select from '../Form/Select';
+import Textarea from '../Form/Textarea';
 
 const CursoOfertado = () => {
     const [dados, setDados] = React.useState([
@@ -27,18 +28,35 @@ const CursoOfertado = () => {
     const [book, setBook] = React.useState('');
     const [noRecord, setNoRecord] = React.useState(false);
     const [loading, setLoading] = React.useState('');
-    const [show, setShow] = React.useState(false);
+    // const [show, setShow] = React.useState(false);
+     const [showEdit, setShowEdit] = React.useState(false);
+  const [showInclude, setShowInclude] = React.useState(false);
     const [showExcluir, setShowExcluir] = React.useState(false);
     const [showAlert, setShowAlert] = React.useState(false);
     const [showAlertSucessDelet, setShowAlertSucessDelet] = React.useState(false);
   const [showAlertErrorDelet, setShowAlertErrorDelet] = React.useState(false);
+  
+//   const [name, setName] = React.useState('');
+//   const [institution, setInstitution] = React.useState('');
+//   const [courseCode, setCourseCode] = React.useState('');
+  const [type, setType] = React.useState('');
+  const [numberQualifications, setNumberQualifications] = React.useState('');
+  const [qualifications, setQualifications] = React.useState('');
+  const [note, setNote] = React.useState('');
+//   const [noRecord, setNoRecord] = React.useState(false);
+//   const [loading, setLoading] = React.useState('');
+
     const [table, setTable] = React.useState(false);
     const { register, handleSubmit, errors } = useForm();
     const navigate = useNavigate();
     const handleShowExcluir = (e, id) => setShowExcluir(true);
-    const handleShow = () => setShow(true);
+    // const handleShow = () => setShow(true);
+    const handleCloseInclude = () => setShowInclude(false);
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleShowInclude = () => setShowInclude(true);
+    const handleShowEdit = () => setShowEdit(true);
     const handleCloseExcluirCancelar = () => setShowExcluir(false);
-    const handleClose = () => setShow(false);
+    // const handleClose = () => setShow(false);
     const handleInclude = () => navigate('/cadastro/incluirCursoOfertado');
 
     const onSubmit = (data) => {
@@ -92,7 +110,7 @@ const CursoOfertado = () => {
                     {loading ? (<Button size='lg' disabled className=" mt-3 " variant="warning" type="submit"> Pesquisando...</Button>
                     ) : (<Button size='lg' className=" mt-3 " variant="warning" type="submit"> Pesquisar </Button>)}
                     {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
-                    <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" onClick={handleInclude} > Incluir </Button>
+                    <Button size='lg' className="ml-3 mt-3" variant="secondary" type="button" onClick={handleShowInclude} > Incluir </Button>
 
                 </Form>
 
@@ -121,7 +139,7 @@ const CursoOfertado = () => {
                                     
                                     <td>
 
-                                        <FaUserEdit size='2em' color='#3c6178' title="Editar" onClick={handleShow} ></FaUserEdit >
+                                        <FaUserEdit size='2em' color='#3c6178' title="Editar" onClick={handleShowEdit} ></FaUserEdit >
                                         <RiDeleteBin6Line className='ml-3 mt-1' size='1.9em' color='#c32b3f' title="Excluir" onClick={handleShowExcluir}></RiDeleteBin6Line>
                                         {/* <FaTrashAlt className='deletar-icons ' title="Excluir" onClick={handleShowExcluir} ></FaTrashAlt> */}
                                     </td>
@@ -133,7 +151,8 @@ const CursoOfertado = () => {
                
             </div>
 
-            <ModalEditar show={show} onHide={handleClose} className='subtitleModal ' texto='Editar Cadastro de Diplomas' onClick={handleClose}>
+{/* Modal para Editar dados - início */}
+            <ModalEditar show={showEdit} onHide={handleCloseEdit} className='subtitleModal ' texto='Editar Cadastro de Curso Ofertado' onClick={handleCloseEdit}>
                 <Form className="mt-4 container">
                     <Form.Row>
                         <Input size='lg' lg='10' label='Curso' name='name' type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} onChange={(event) => setName(event.target.value)}></Input>
@@ -145,11 +164,46 @@ const CursoOfertado = () => {
                     </Form.Row>
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}> Fechar </Button>
-                        <Button variant="primary">Salvar alterações</Button>
+                        <Button variant="secondary" onClick={handleCloseEdit}> Fechar </Button>
+                        <Button variant="primary">Salvar </Button>
                     </Modal.Footer>
                 </Form>
             </ModalEditar>
+{/* Modal para Editar dados - fim */}
+
+ {/* Modal para Incluir dados - início */}
+ <ModalEditar show={showInclude} onHide={handleCloseInclude} className='subtitleModal ' texto='Incluir Cadastro de Curso Ofertado'>
+          <Form className="mt-4 containerModal " onSubmit={handleSubmit(onSubmit)}>
+          <Form.Row>
+                                <Input size='lg' lg='10' label='Instituição' name='institution' value={institution} type='text' register={register({ required: true })} textoErro={errors.institution && "Nome do Instituição é obrigatório"} placeholder='Nome da Instituição' onChange={(event) => setInstitution(event.target.value)}></Input>
+                            </Form.Row>
+
+                            <Form.Row>
+                                <Input size='lg' lg='10' label='Curso' name='name' value={name} type='text' register={register({ required: true })} textoErro={errors.name && "Nome do Curso é obrigatório"} placeholder='Nome do Curso' onChange={(event) => setName(event.target.value)}></Input>
+                            </Form.Row>
+
+                            <Form.Row>
+                                <Select lg='5' size='lg' label='Tipo' value={type} name='type' register={register({ required: true })} options={['tipo1', 'tipo2']} textoErro={errors.type && "Campo Tipo é obrigatório"} onChange={({ target }) => setType(target.value)}></Select>
+                                <Input size='lg' lg='5' label='QT. Qualificações' name='numberQualifications' value={name} type='text' register={register({ required: true })} textoErro={errors.name && "Campo QT. Qualificações é obrigatório"} onChange={(event) => setNumberQualifications(event.target.value)}></Input>
+                            </Form.Row>
+
+                            <Form.Row>
+                                <Textarea label='Habilitação' name='note' value={note} ref={register({ required: true })} lg='10' rows={3} size='lg' className='mt-3' onChange={(event) => setNote(event.target.value)}></Textarea>
+                            </Form.Row>
+
+            <Modal.Footer>
+            {loading ? (<Button size='lg' disabled className=" mt-3 mr-2" variant="primary" type="submit"> Salvando...</Button>
+                    ) : (<Button size='lg' className=" mt-3 mr-2" variant="primary" type="submit"> Salvar </Button>)}
+                    {/* <Button className="col-lg-2 ml-3 mt-3" variant="secondary" type="button" href="/cadastro/incluirCadastroDiploma" > Incluir </Button> */}
+                    {loading ? (<Button size='lg' disabled className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisando...</Button>
+                    ) : (<Button size='lg' className=" mt-3 mr-2" variant="warning" type="submit"> Pesquisar </Button>)}                    
+                    <Button  size='lg' className=" mt-3 mr-2" variant="info">Nova Inclusão</Button>
+
+
+            </Modal.Footer>
+          </Form>
+        </ModalEditar>
+        {/* Modal para Incluir dados - fim */}
 
             <ModalConfirmarExclusao showExcluir={showExcluir} onHide={handleCloseExcluirCancelar} className='subtitleModal'
                 cancelar={handleCloseExcluirCancelar} delet={(e) => handleDelete()} texto='Tem certeza que deseja excluir o item selecionado !' > </ModalConfirmarExclusao>

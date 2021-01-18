@@ -197,7 +197,7 @@ console.log(data);
             </Modal.Footer>
           </Form>
         </ModalEditar>
-        {/* Editar dados - início */}
+        {/* Editar dados - fim */}
 
         {/* Modal para Incluir dados - início */}
         <ModalEditar show={showInclude} onHide={handleCloseInclude} className='subtitleModal ' texto='Incluir Cadastro de Diplomas'>

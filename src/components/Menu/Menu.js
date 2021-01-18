@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import { MdAdd, MdRemove } from "react-icons/md";
 import Dropdown from 'react-bootstrap/Dropdown'
 import Acordeao from '../Acordeao';
-import {  FaUserGraduate } from "react-icons/fa";
+import {   FaGraduationCap} from "react-icons/fa";
 // FaGraduationCap
 // FaUserGraduate
 
@@ -16,7 +16,7 @@ const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
        {/* <div className="mb-8 acima"> */}
-       <div className='diploma'><FaUserGraduate color='#c32b3f' size='2rem' style={{ marginTop: '100px' }} className='ml-1' ></FaUserGraduate></div>
+       <div className='diploma'>< FaGraduationCap color='#c32b3f' size='2rem' style={{ marginTop: '100px' }} className='ml-1' ></ FaGraduationCap></div>
   <Acordeao></Acordeao>
 
  {/* </div> */}
